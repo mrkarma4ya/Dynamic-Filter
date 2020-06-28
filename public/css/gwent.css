@@ -1,0 +1,106 @@
+@font-face {
+    font-family: GWENT;
+    src: url(https://www.playgwent.com/fonts/hinted-GWENT-ExtraBold.ttf);
+}
+
+.card-body {
+    background-image: url(https://www.playgwent.com/build/img/netdecking/mobile/cardList/popup/mobile-tooltip-card-center-5783df7c.jpg);
+    background-size: 100%;
+    color: white;
+}
+
+.card-title a {
+    color: white;
+}
+
+.card-header.Northern {
+    background: lightblue;
+    background-image: url('https://www.playgwent.com/build/img/netdecking/mobile/cardList/popup/tooltip-card-nor-99981e94.jpg');
+    background-size: 100%;
+}
+
+.card-header.Nilfgaard {
+    background: darkslategrey;
+    background-image: url('https://www.playgwent.com/build/img/netdecking/mobile/cardList/popup/tooltip-card-nilf-3d8b98b5.jpg');
+    background-size: cover;
+}
+
+.card-header.Scoitael {
+    background: darkslategrey;
+    background-image: url('https://www.playgwent.com/build/img/netdecking/mobile/cardList/popup/tooltip-card-sco-2843c8e2.jpg');
+    background-size: cover;
+}
+
+.card-header.Monsters {
+    background: darkslategrey;
+    background-image: url('https://www.playgwent.com/build/img/netdecking/mobile/cardList/popup/tooltip-card-mon-d155d1a4.jpg');
+    background-size: cover;
+}
+
+.card-header.Skellige {
+    background: darkslategrey;
+    background-image: url('https://www.playgwent.com/build/img/netdecking/mobile/cardList/popup/tooltip-card-ske-06f67df3.jpg');
+    background-size: cover;
+}
+
+.card-header.Syndicate {
+    background: darkslategrey;
+    background-image: url('https://www.playgwent.com/build/img/netdecking/mobile/cardList/popup/tooltip-card-syn-180aea32.jpg');
+    background-size: cover;
+}
+
+.card-header.Neutral {
+    background: darkslategrey;
+    background-image: url('https://www.playgwent.com/build/img/netdecking/mobile/cardList/popup/tooltip-card-neu-6dc5f580.jpg');
+    background-size: cover;
+}
+
+.card-footer {
+    font-size: 18px;
+    text-align: center;
+    font-weight: 500;
+    color: white;
+    font-family: GWENT;
+}
+
+.card-footer.Northern {
+    background: lightblue;
+    background-image: url('https://www.playgwent.com/build/img/netdecking/mobile/deck_finder/nor-bg-right-14360225.jpg');
+    background-size: cover;
+}
+
+.card-footer.Nilfgaard {
+    background: darkslategrey;
+    background-image: url('https://www.playgwent.com/build/img/netdecking/mobile/deck_finder/nilf-bg-5194a253.jpg');
+    background-size: cover;
+}
+
+.card-footer.Scoitael {
+    background: darkslategrey;
+    background-image: url('https://www.playgwent.com/build/img/netdecking/mobile/deck_finder/sco-bg-cbb75ebe.jpg');
+    background-size: cover;
+}
+
+.card-footer.Monsters {
+    background: darkslategrey;
+    background-image: url('https://www.playgwent.com/build/img/netdecking/mobile/deck_finder/mon-bg-e99da997.jpg');
+    background-size: cover;
+}
+
+.card-footer.Skellige {
+    background: darkslategrey;
+    background-image: url('https://www.playgwent.com/build/img/netdecking/mobile/deck_finder/ske-bg-7370f311.jpg');
+    background-size: cover;
+}
+
+.card-footer.Syndicate {
+    background: darkslategrey;
+    background-image: url('https://www.playgwent.com/build/img/netdecking/mobile/deck_finder/syn-bg-b54e7b9f.jpg');
+    background-size: cover;
+}
+
+.card-footer.Neutral {
+    background: darkslategrey;
+    background-image: url('https://www.playgwent.com/build/img/netdecking/mobile/cardList/popup/tooltip-card-neu-6dc5f580.jpg');
+    background-size: cover;
+}
