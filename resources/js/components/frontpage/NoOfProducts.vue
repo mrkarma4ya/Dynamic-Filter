@@ -6,11 +6,11 @@
             @input="updateValue($event.target.value)"
             @change="handler()"
         >
-            <option>10</option>
-            <option>20</option>
-            <option>50</option>
-            <option>100</option>
-            <option>500</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">50</option>
+            <option value="40">100</option>
+            <option value="50">500</option>
         </select>
     </div>
 </template>
@@ -23,7 +23,6 @@ export default {
     },
     props: {
         value:{
-            type: Number,
             default: 10
         },
         changeHandler:{

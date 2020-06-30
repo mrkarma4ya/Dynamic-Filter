@@ -6,6 +6,16 @@
                 <hr />
                 <app-search v-model="filter.search" :change-handler="loadProducts"></app-search>
                 <hr />
+
+                <!-- <vue-slider
+                    v-model="priceRange"
+                    :enable-cross="false"
+                    :min="Math.floor(this.min_price)"
+                    :max="Math.ceil(this.max_price)"
+                    :interval="1"
+                    :lazy="true"
+                    @change="loadProducts"
+                ></vue-slider> -->
                 <h5>Categories</h5>
                 <div class="form-check" v-for="(category, id) in categories" :key="id">
                     <input
@@ -186,7 +196,6 @@
         </div>
         <!-- /.col-lg-9 -->
         <hr />
-        <!-- <add-category></add-category> -->
     </div>
     <!-- /.row -->
 
@@ -201,6 +210,9 @@ import PriceFilter from "../components/frontpage/PriceFilter.vue";
 import NoOfProducts from "../components/frontpage/NoOfProducts.vue";
 import ProductSortBy from "../components/frontpage/ProductSortBy.vue";
 
+import VueSlider from "vue-slider-component";
+import "vue-slider-component/theme/default.css";
+
 export default {
     data() {
         return {
@@ -213,6 +225,7 @@ export default {
             productImg: "http://placehold.it/700x400",
             productListStyle: "grid",
             productsLoaded: false,
+            priceRange: [],
             price: {
                 min: null,
                 max: null
@@ -226,15 +239,16 @@ export default {
         "app-price-filter": PriceFilter,
         "app-no-of-products": NoOfProducts,
         "app-product-sort-by": ProductSortBy,
-        Paginate
+        Paginate,
+        VueSlider
     },
 
     computed: {
         filter() {
             return {
                 categories: [],
-                minPrice: this.price.min,
-                maxPrice: this.price.max,
+                minPrice: this.priceRange[0],
+                maxPrice: this.priceRange[1],
                 noOfProducts: 10,
                 orderBy: "latest",
                 search: ""
@@ -272,6 +286,9 @@ export default {
                     this.loading = false;
                     this.min_price = response.data.meta.min_price / 100;
                     this.max_price = response.data.meta.max_price / 100;
+                    if (!this.productsLoaded) {
+                        this.priceRange = [this.min_price, this.max_price];
+                    }
                     this.productsLoaded = true;
                 })
                 .catch(function(error) {
