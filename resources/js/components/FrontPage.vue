@@ -217,24 +217,6 @@ import VueSlider from "vue-slider-component";
 import "vue-slider-component/theme/default.css";
 
 export default {
-    data() {
-        return {
-            categories: [],
-            products: [],
-            max_price: 100,
-            min_price: 0,
-            loading: true,
-            pageCount: 1,
-            productImg: "http://placehold.it/700x400",
-            productListStyle: "grid",
-            productsLoaded: false,
-            priceRange: [],
-            price: {
-                 min: null,
-                 max: null
-             }
-        };
-    },
 
     components: {
         "add-category": AddCategory,
@@ -244,6 +226,25 @@ export default {
         "app-product-sort-by": ProductSortBy,
         Paginate,
         VueSlider
+    },
+
+    data() {
+        return {
+            categories: [],
+            products: [],
+            max_price: 100, // Max Price of All Products
+            min_price: 0, // Min Price of All Products
+            loading: true,
+            pageCount: 1,
+            productImg: "http://placehold.it/700x400",
+            productListStyle: "grid",
+            productsLoaded: false,
+            //priceRange: [],
+            price: {
+                 min: null, // Min Price Entered by User for filtering
+                 max: null  // Max price Entered by User for filtering
+             }
+        };
     },
 
     computed: {
@@ -303,6 +304,10 @@ export default {
         },
 
         clearAllFilters: function() {
+
+            this.price.min = null;
+            this.price.max = null;
+
             this.filter = {
                 categories: [],
                 minPrice: null,
@@ -311,7 +316,13 @@ export default {
                 orderBy: "latest",
                 search: ""
             };
+
+            console.log(this.filter);
+            
             this.loadProducts();
+
+            console.log(this.filter);
+
         }
     }
 };

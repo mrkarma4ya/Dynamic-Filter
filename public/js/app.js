@@ -2212,24 +2212,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      categories: [],
-      products: [],
-      max_price: 100,
-      min_price: 0,
-      loading: true,
-      pageCount: 1,
-      productImg: "http://placehold.it/700x400",
-      productListStyle: "grid",
-      productsLoaded: false,
-      priceRange: [],
-      price: {
-        min: null,
-        max: null
-      }
-    };
-  },
   components: {
     "add-category": _components_AddCategory_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     "app-search": _components_frontpage_Search_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -2238,6 +2220,28 @@ __webpack_require__.r(__webpack_exports__);
     "app-product-sort-by": _components_frontpage_ProductSortBy_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
     Paginate: vuejs_paginate__WEBPACK_IMPORTED_MODULE_0___default.a,
     VueSlider: vue_slider_component__WEBPACK_IMPORTED_MODULE_6___default.a
+  },
+  data: function data() {
+    return {
+      categories: [],
+      products: [],
+      max_price: 100,
+      // Max Price of All Products
+      min_price: 0,
+      // Min Price of All Products
+      loading: true,
+      pageCount: 1,
+      productImg: "http://placehold.it/700x400",
+      productListStyle: "grid",
+      productsLoaded: false,
+      //priceRange: [],
+      price: {
+        min: null,
+        // Min Price Entered by User for filtering
+        max: null // Max price Entered by User for filtering
+
+      }
+    };
   },
   computed: {
     filter: function filter() {
@@ -2290,6 +2294,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     clearAllFilters: function clearAllFilters() {
+      this.price.min = null;
+      this.price.max = null;
       this.filter = {
         categories: [],
         minPrice: null,
@@ -2298,7 +2304,9 @@ __webpack_require__.r(__webpack_exports__);
         orderBy: "latest",
         search: ""
       };
+      console.log(this.filter);
       this.loadProducts();
+      console.log(this.filter);
     }
   }
 });
