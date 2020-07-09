@@ -23,6 +23,14 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('front-page', require('./components/FrontPage.vue').default);
 // Vue.component('add-category', require('./components/AddCategory.vue').default);
 
+import Vue from 'vue'
+
+import excel from 'vue-excel-export'
+Vue.use(excel)
+
+import VueExcelXlsx from "vue-excel-xlsx";
+Vue.use(VueExcelXlsx);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -32,30 +40,4 @@ Vue.component('front-page', require('./components/FrontPage.vue').default);
 
 const app = new Vue({
     el: '#app',
-    data: {
-
-        postTitle: '',
-        postContent: '',
-        posts: []
-
-
-    },
-
-    methods: {
-        postSubmit() {
-            axios.post('/posts', {
-                    title: this.postTitle,
-                    content: this.postContent
-                })
-                .then(response => {
-                        console.log(response.data);
-                        // this.posts.title = response.data.title;
-                        //  this.posts.content = response.data.content;
-                        // this.posts = response.data;
-                        this.posts.push(response.data);
-                    }
-
-                );
-        }
-    },
 });

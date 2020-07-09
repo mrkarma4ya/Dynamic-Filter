@@ -15,7 +15,7 @@
                     :interval="1"
                     :lazy="true"
                     @change="loadProducts"
-                ></vue-slider> -->
+                ></vue-slider>-->
                 <h5>Categories</h5>
                 <div class="form-check" v-for="(category, id) in categories" :key="id">
                     <input
@@ -36,8 +36,10 @@
                         :change-handler="loadProducts"
                         :min-price="min_price"
                         :max-price="max_price"
-                    ></app-price-filter>
+                   ></app-price-filter>
                 </div>
+    
+                <!-- {{price.min}} -->
                 <hr />
                 <button
                     class="btn btn-outline-danger btn-block"
@@ -76,6 +78,7 @@
                             :break-view-class="'page-item'"
                             :break-view-link-class="'page-link'"
                         ></paginate>
+                       
                     </div>
 
                     <div class="col-md pl-0">
@@ -227,9 +230,9 @@ export default {
             productsLoaded: false,
             priceRange: [],
             price: {
-                min: null,
-                max: null
-            }
+                 min: null,
+                 max: null
+             }
         };
     },
 
@@ -247,8 +250,8 @@ export default {
         filter() {
             return {
                 categories: [],
-                minPrice: this.priceRange[0],
-                maxPrice: this.priceRange[1],
+                minPrice: this.price.min,
+                maxPrice: this.price.max,
                 noOfProducts: 10,
                 orderBy: "latest",
                 search: ""
@@ -286,6 +289,9 @@ export default {
                     this.loading = false;
                     this.min_price = response.data.meta.min_price / 100;
                     this.max_price = response.data.meta.max_price / 100;
+                   // this.price.min = response.data.meta.min_price / 100;
+                   // this.price.max = response.data.meta.max_price / 100;
+
                     if (!this.productsLoaded) {
                         this.priceRange = [this.min_price, this.max_price];
                     }
