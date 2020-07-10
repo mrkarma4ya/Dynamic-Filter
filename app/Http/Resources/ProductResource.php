@@ -20,7 +20,8 @@ class ProductResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'price' => '$'.number_format($this->price/100, 2),
-            'category' => new CategoryResource($this->category)
+            'category' => new CategoryResource($this->category),
+            'main_image' => $this->main_image
         ];
         //return parent::toArray($request);
     }

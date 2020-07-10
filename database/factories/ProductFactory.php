@@ -11,6 +11,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'name' => $faker->unique()->word(),
         'category_id' => \App\Category::inRandomOrder()->first()->id,
         'description' => $faker->paragraph(),
-        'price' => rand(1000, 5000)
+        'price' => rand(1000, 5000),
+        'main_image' => $faker->imageUrl($width = 700, $height = 400)
     ];
 });
