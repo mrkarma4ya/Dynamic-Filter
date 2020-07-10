@@ -293,12 +293,7 @@ export default {
                 search: "",
                 price: [null,null]
             };
-
-            console.log(this.filter);
-
             this.loadProducts();
-
-            console.log(this.filter);
         }
     }
 };

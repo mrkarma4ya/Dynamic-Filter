@@ -31,10 +31,6 @@ class Product extends Model
             
             ->when(is_numeric(request()->price[0]) && is_numeric(request()->price[1]), function ($query) {
 
-
-                Log::info(request()->price[0]);
-                Log::info(request()->price[1]);
-
                 $query->whereBetween('price', [request()->price[0] * 100, request()->price[1] * 100]);
             })
             ->when(request()->input('search'), function ($query) {

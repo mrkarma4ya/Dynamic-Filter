@@ -2281,9 +2281,7 @@ __webpack_require__.r(__webpack_exports__);
         search: "",
         price: [null, null]
       };
-      console.log(this.filter);
       this.loadProducts();
-      console.log(this.filter);
     }
   }
 });
