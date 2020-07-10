@@ -2201,6 +2201,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -42342,19 +42343,50 @@ var render = function() {
         }
       },
       [
-        _c("option", { attrs: { value: "latest" } }, [_vm._v("Latest")]),
+        _c(
+          "option",
+          {
+            attrs: { value: "latest" },
+            domProps: { selected: _vm.value == "latest" }
+          },
+          [_vm._v("Latest")]
+        ),
         _vm._v(" "),
-        _c("option", { attrs: { value: "price_asc" } }, [
-          _vm._v("Price (Ascending)")
-        ]),
+        _c(
+          "option",
+          {
+            attrs: { value: "price_asc" },
+            domProps: { selected: _vm.value == "price_asc" }
+          },
+          [_vm._v("Price (Ascending)")]
+        ),
         _vm._v(" "),
-        _c("option", { attrs: { value: "price_desc" } }, [
-          _vm._v("Price (Descending)")
-        ]),
+        _c(
+          "option",
+          {
+            attrs: { value: "price_desc" },
+            domProps: { selected: _vm.value == "price_desc" }
+          },
+          [_vm._v("Price (Descending)")]
+        ),
         _vm._v(" "),
-        _c("option", { attrs: { value: "name_asc" } }, [_vm._v("Name (A-Z)")]),
+        _c(
+          "option",
+          {
+            attrs: { value: "name_asc" },
+            domProps: { selected: _vm.value == "name_asc" }
+          },
+          [_vm._v("Name (A-Z)")]
+        ),
         _vm._v(" "),
-        _c("option", { attrs: { value: "name_desc" } }, [_vm._v("Name (Z-A)")])
+        _c(
+          "option",
+          {
+            attrs: { value: "name_desc" },
+            domProps: { selected: _vm.value == "name_desc" }
+          },
+          [_vm._v("Name (Z-A)")]
+        )
       ]
     )
   ])

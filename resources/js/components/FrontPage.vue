@@ -88,6 +88,7 @@
                                 v-model="filter.orderBy"
                                 :change-handler="loadProducts"
                             ></app-product-sort-by>
+                            
 
                             <!-- ***PRODUCT STYLE BUTTONS*** -->
 
