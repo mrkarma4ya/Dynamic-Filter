@@ -22,16 +22,21 @@ class Product extends Model
             ->when(count(request()->input('categories', [])), function ($query) {
                 $query->whereIn('category_id', request()->input('categories'));
             })
-            ->when(is_numeric(request()->price[0]), function ($query) {
-                $query->where('price', '>=', request()->price[0] * 100);
+            ->when(isset(request()->price[0]), function ($query) {
+                if (is_numeric(request()->price[0])) {
+                    $query->where('price', '>=', request()->price[0] * 100);
+                }
             })
-            ->when(is_numeric(request()->price[1]), function ($query) {
-                $query->where('price', '<=', request()->price[1] * 100);
+            ->when(isset(request()->price[1]), function ($query) {
+                if (is_numeric(request()->price[1])) {
+                    $query->where('price', '<=', request()->price[1] * 100);
+                }
             })
-            
-            ->when(is_numeric(request()->price[0]) && is_numeric(request()->price[1]), function ($query) {
 
-                $query->whereBetween('price', [request()->price[0] * 100, request()->price[1] * 100]);
+            ->when(isset(request()->price[0]) && isset(request()->price[1]), function ($query) {
+                if (is_numeric(request()->price[0]) && is_numeric(request()->price[1])) {
+                    $query->whereBetween('price', [request()->price[0] * 100, request()->price[1] * 100]);
+                }
             })
             ->when(request()->input('search'), function ($query) {
                 $query->where('name', 'like', '%' . request()->input('search') . '%');
