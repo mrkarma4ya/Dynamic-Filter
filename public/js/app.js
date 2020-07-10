@@ -2201,8 +2201,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 
@@ -2234,26 +2232,14 @@ __webpack_require__.r(__webpack_exports__);
       productImg: "http://placehold.it/700x400",
       productListStyle: "grid",
       productsLoaded: false,
-      //priceRange: [],
-      price: {
-        min: null,
-        // Min Price Entered by User for filtering
-        max: null // Max price Entered by User for filtering
-
-      }
-    };
-  },
-  computed: {
-    filter: function filter() {
-      return {
+      filter: {
         categories: [],
-        minPrice: this.price.min,
-        maxPrice: this.price.max,
         noOfProducts: 10,
         orderBy: "latest",
-        search: ""
-      };
-    }
+        search: "",
+        price: [null, null]
+      }
+    };
   },
   mounted: function mounted() {
     this.loadCategories();
@@ -2281,28 +2267,19 @@ __webpack_require__.r(__webpack_exports__);
         _this2.pageCount = response.data.meta.last_page;
         _this2.loading = false;
         _this2.min_price = response.data.meta.min_price / 100;
-        _this2.max_price = response.data.meta.max_price / 100; // this.price.min = response.data.meta.min_price / 100;
-        // this.price.max = response.data.meta.max_price / 100;
-
-        if (!_this2.productsLoaded) {
-          _this2.priceRange = [_this2.min_price, _this2.max_price];
-        }
-
+        _this2.max_price = response.data.meta.max_price / 100;
         _this2.productsLoaded = true;
       })["catch"](function (error) {
         console.log(error);
       });
     },
     clearAllFilters: function clearAllFilters() {
-      this.price.min = null;
-      this.price.max = null;
       this.filter = {
         categories: [],
-        minPrice: null,
-        maxPrice: null,
         noOfProducts: 10,
         orderBy: "latest",
-        search: ""
+        search: "",
+        price: [null, null]
       };
       console.log(this.filter);
       this.loadProducts();
@@ -2415,12 +2392,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     value: {
-      type: Object,
+      type: Array,
       "default": function _default() {
-        return {
-          min: null,
-          max: null
-        };
+        return [null, null];
       }
     },
     minPrice: {},
@@ -2432,10 +2406,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     updatePrice: function updatePrice(value) {
-      this.$emit("input", {
-        min: this.$refs.minPriceInput.value,
-        max: this.$refs.maxPriceInput.value
-      });
+      this.$emit("input", [this.$refs.minPriceInput.value, this.$refs.maxPriceInput.value]);
     },
     handler: function handler() {
       this.changeHandler();
@@ -41859,11 +41830,11 @@ var render = function() {
                   "max-price": _vm.max_price
                 },
                 model: {
-                  value: _vm.price,
+                  value: _vm.filter.price,
                   callback: function($$v) {
-                    _vm.price = $$v
+                    _vm.$set(_vm.filter, "price", $$v)
                   },
-                  expression: "price"
+                  expression: "filter.price"
                 }
               })
             ],
@@ -42286,7 +42257,7 @@ var render = function() {
         ref: "minPriceInput",
         staticClass: "form-control",
         attrs: { type: "number", placeholder: _vm.minPrice },
-        domProps: { value: _vm.value.min },
+        domProps: { value: _vm.value[0] },
         on: {
           input: function($event) {
             return _vm.updatePrice()
@@ -42305,7 +42276,7 @@ var render = function() {
         ref: "maxPriceInput",
         staticClass: "form-control",
         attrs: { type: "number", placeholder: _vm.maxPrice },
-        domProps: { value: _vm.value.max },
+        domProps: { value: _vm.value[1] },
         on: {
           input: function($event) {
             return _vm.updatePrice()

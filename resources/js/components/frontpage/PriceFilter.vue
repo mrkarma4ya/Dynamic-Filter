@@ -10,7 +10,7 @@
                     class="form-control"
                     ref="minPriceInput"
                     :placeholder="minPrice"
-                    :value="value.min"
+                    :value="value[0]"
                     @input="updatePrice()"
                     @change="handler()"
                 />
@@ -24,7 +24,7 @@
                     class="form-control"
                     ref="maxPriceInput"
                     :placeholder="maxPrice"
-                    :value="value.max"
+                    :value="value[1]"
                     @input="updatePrice()"
                     @change="handler()"
                 />
@@ -41,13 +41,10 @@ export default {
     },
     props: {
         value: {
-            type: Object,
+            type: Array,
             default(){
-                return {
-                    min: null,
-                    max: null
-                }
-            }
+                return [null,null]
+            } 
         },
         minPrice: {
 
@@ -63,10 +60,7 @@ export default {
 
     methods: {
         updatePrice(value) {
-            this.$emit("input", {
-                min: this.$refs.minPriceInput.value,
-                max: this.$refs.maxPriceInput.value,
-            });
+            this.$emit("input", [this.$refs.minPriceInput.value,this.$refs.maxPriceInput.value]);
         },
         
         handler(){

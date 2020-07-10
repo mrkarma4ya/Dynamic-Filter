@@ -32,14 +32,13 @@
                 <hr />
                 <div class="form-group mt-3">
                     <app-price-filter
-                        v-model="price"
+                        v-model="filter.price"
                         :change-handler="loadProducts"
                         :min-price="min_price"
                         :max-price="max_price"
-                   ></app-price-filter>
+                    ></app-price-filter>
                 </div>
-    
-                <!-- {{price.min}} -->
+
                 <hr />
                 <button
                     class="btn btn-outline-danger btn-block"
@@ -78,7 +77,6 @@
                             :break-view-class="'page-item'"
                             :break-view-link-class="'page-link'"
                         ></paginate>
-                       
                     </div>
 
                     <div class="col-md pl-0">
@@ -217,7 +215,6 @@ import VueSlider from "vue-slider-component";
 import "vue-slider-component/theme/default.css";
 
 export default {
-
     components: {
         "add-category": AddCategory,
         "app-search": Search,
@@ -239,25 +236,15 @@ export default {
             productImg: "http://placehold.it/700x400",
             productListStyle: "grid",
             productsLoaded: false,
-            //priceRange: [],
-            price: {
-                 min: null, // Min Price Entered by User for filtering
-                 max: null  // Max price Entered by User for filtering
-             }
-        };
-    },
 
-    computed: {
-        filter() {
-            return {
+            filter: {
                 categories: [],
-                minPrice: this.price.min,
-                maxPrice: this.price.max,
                 noOfProducts: 10,
                 orderBy: "latest",
-                search: ""
-            };
-        }
+                search: "",
+                price: [null,null]
+            }
+        };
     },
 
     mounted() {
@@ -290,12 +277,6 @@ export default {
                     this.loading = false;
                     this.min_price = response.data.meta.min_price / 100;
                     this.max_price = response.data.meta.max_price / 100;
-                   // this.price.min = response.data.meta.min_price / 100;
-                   // this.price.max = response.data.meta.max_price / 100;
-
-                    if (!this.productsLoaded) {
-                        this.priceRange = [this.min_price, this.max_price];
-                    }
                     this.productsLoaded = true;
                 })
                 .catch(function(error) {
@@ -305,24 +286,19 @@ export default {
 
         clearAllFilters: function() {
 
-            this.price.min = null;
-            this.price.max = null;
-
             this.filter = {
                 categories: [],
-                minPrice: null,
-                maxPrice: null,
                 noOfProducts: 10,
                 orderBy: "latest",
-                search: ""
+                search: "",
+                price: [null,null]
             };
 
             console.log(this.filter);
-            
+
             this.loadProducts();
 
             console.log(this.filter);
-
         }
     }
 };
