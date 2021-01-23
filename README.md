@@ -10,3 +10,5 @@ Instant Filter is a WIP project I'm working on in order to learn VueJS and Larav
 - Clear all filters.
 - Display results in list or grid view.
 
+
+
