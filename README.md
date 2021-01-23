@@ -9,6 +9,3 @@ Instant Filter is a WIP project I'm working on in order to learn VueJS and Larav
 - Filter my Max or Min Price.
 - Clear all filters.
 - Display results in list or grid view.
-
-
-
