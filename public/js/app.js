@@ -42027,7 +42027,7 @@ var render = function() {
                         _c("a", { attrs: { href: "#" } }, [
                           _c("img", {
                             staticClass: "card-img-top",
-                            attrs: { src: _vm.productImg, alt: "" }
+                            attrs: { src: product.main_image, alt: "" }
                           })
                         ]),
                         _vm._v(" "),
@@ -42217,11 +42217,11 @@ var render = function() {
         _vm._v(" "),
         _c("option", { attrs: { value: "20" } }, [_vm._v("20")]),
         _vm._v(" "),
-        _c("option", { attrs: { value: "30" } }, [_vm._v("50")]),
+        _c("option", { attrs: { value: "50" } }, [_vm._v("50")]),
         _vm._v(" "),
-        _c("option", { attrs: { value: "40" } }, [_vm._v("100")]),
+        _c("option", { attrs: { value: "100" } }, [_vm._v("100")]),
         _vm._v(" "),
-        _c("option", { attrs: { value: "50" } }, [_vm._v("500")])
+        _c("option", { attrs: { value: "500" } }, [_vm._v("500")])
       ]
     )
   ])
@@ -42358,7 +42358,7 @@ var render = function() {
             attrs: { value: "price_asc" },
             domProps: { selected: _vm.value == "price_asc" }
           },
-          [_vm._v("Price (Ascending)")]
+          [_vm._v("Price (Low → High)")]
         ),
         _vm._v(" "),
         _c(
@@ -42367,7 +42367,7 @@ var render = function() {
             attrs: { value: "price_desc" },
             domProps: { selected: _vm.value == "price_desc" }
           },
-          [_vm._v("Price (Descending)")]
+          [_vm._v("Price (High → Low)")]
         ),
         _vm._v(" "),
         _c(
@@ -42376,7 +42376,7 @@ var render = function() {
             attrs: { value: "name_asc" },
             domProps: { selected: _vm.value == "name_asc" }
           },
-          [_vm._v("Name (A-Z)")]
+          [_vm._v("Name (A → Z)")]
         ),
         _vm._v(" "),
         _c(
@@ -42385,7 +42385,7 @@ var render = function() {
             attrs: { value: "name_desc" },
             domProps: { selected: _vm.value == "name_desc" }
           },
-          [_vm._v("Name (Z-A)")]
+          [_vm._v("Name (Z → A)")]
         )
       ]
     )

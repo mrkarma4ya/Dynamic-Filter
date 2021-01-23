@@ -137,7 +137,7 @@
                         >
                             <div class="card h-100">
                                 <a href="#">
-                                    <img class="card-img-top" :src="productImg" alt />
+                                    <img class="card-img-top" :src="product.main_image" alt />
                                 </a>
                                 <div class="card-header" :class="product.category.name">
                                     <h4 class="card-title">

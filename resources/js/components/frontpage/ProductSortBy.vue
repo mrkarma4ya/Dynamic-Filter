@@ -7,10 +7,10 @@
             @change="handler()"
         >
             <option value="latest" :selected="value == 'latest'">Latest</option>
-            <option value="price_asc" :selected="value == 'price_asc'">Price (Ascending)</option>
-            <option value="price_desc" :selected="value == 'price_desc'">Price (Descending)</option>
-            <option value="name_asc" :selected="value == 'name_asc'">Name (A-Z)</option>
-            <option value="name_desc" :selected="value == 'name_desc'">Name (Z-A)</option>
+            <option value="price_asc" :selected="value == 'price_asc'">Price (Low &#8594; High)</option>
+            <option value="price_desc" :selected="value == 'price_desc'">Price (High &#8594; Low)</option>
+            <option value="name_asc" :selected="value == 'name_asc'">Name (A &#8594; Z)</option>
+            <option value="name_desc" :selected="value == 'name_desc'">Name (Z &#8594; A)</option>
         </select>
     </div>
 </template>
